@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AK Estate & Builders | Real Estate & Modern Construction</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-main: #0b1017;
+            --bg-secondary: #131a24;
+            --bg-card: #1b2430;
+            --text-primary: #ffffff;
+            --text-secondary: #a0aec0;
+            --text-muted: #718096;
+            --accent-gold: #d4af37;
+            --accent-gold-hover: #b89528;
+            --border-color: rgba(212, 175, 55, 0.2);
+            --input-bg: #0f1620;
+            --input-text: #ffffff;
+            --shadow-color: rgba(0, 0, 0, 0.5);
+            --nav-bg: rgba(11, 16, 23, 0.95);
+            --hero-overlay: linear-gradient(rgba(11, 16, 23, 0.75), rgba(11, 16, 23, 0.85));
+        }
+
+        [data-theme="light"] {
+            --bg-main: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-card: #ffffff;
+            --text-primary: #1a202c;
+            --text-secondary: #4a5568;
+            --text-muted: #718096;
+            --accent-gold: #c59b27;
+            --accent-gold-hover: #a6811e;
+            --border-color: rgba(197, 155, 39, 0.3);
+            --input-bg: #f1f5f9;
+            --input-text: #1a202c;
+            --shadow-color: rgba(0, 0, 0, 0.08);
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --hero-overlay: linear-gradient(rgba(255, 255, 255, 0.65), rgba(248, 250, 252, 0.85));
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        h1, h2, h3, h4, h5, .brand-font {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-primary);
+        }
+
+        p, span, label, li {
+            color: var(--text-secondary);
+        }
+
+        .navbar {
+    background-color: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+/* Logo + text ko navbar ke center mein vertically align karne ke liye */
+.navbar > .container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--text-primary) !important;
+}
+.navbar-brand span {
+    color: var(--accent-gold);
+}
+
+/* Mobile ke liye logo aur text chota rakhein */
+@media (max-width: 768px) {
+    .navbar-brand img {
+        height: 50px !important;
+        margin-top: 10px !important;
+    }
+    .navbar-brand span {
+        font-size: 0.9rem !important;
+    }
+}
+/* Animated Gold Bottom Line for Nav Links */
+.nav-link {
+    color: var(--text-primary) !important;
+    font-weight: 500;
+    margin: 0 8px;
+    position: relative;
+    padding-bottom: 6px !important;
+    transition: color 0.3s ease;
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: var(--accent-gold);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+.nav-link:hover, .nav-link.active {
+    color: var(--accent-gold) !important;
+}
+
+.theme-toggle-btn {
+    background: rgba(212, 175, 55, 0.15);
+    border: 1px solid var(--accent-gold);
+    color: var(--accent-gold);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+}
+.theme-toggle-btn:hover {
+    background: var(--accent-gold);
+    color: #000;
+    transform: rotate(15deg);
+}
+
+        /* Right Center Floating WhatsApp Button */
+        .floating-whatsapp {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 999;
+            background-color: #25d366;
+            color: #ffffff !important;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 18px rgba(37, 211, 102, 0.5);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .floating-whatsapp:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.7);
+            color: #ffffff !important;
+        }
+
+        .btn-gold {
+            background-color: var(--accent-gold);
+            color: #000 !important;
+            font-weight: 600;
+            padding: 10px 24px;
+            border-radius: 6px;
+            border: none;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-gold:hover {
+            background-color: var(--accent-gold-hover);
+            color: #000 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-outline-gold {
+            border: 2px solid var(--accent-gold);
+            color: var(--accent-gold) !important;
+            font-weight: 600;
+            padding: 8px 22px;
+            border-radius: 6px;
+            background: transparent;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-outline-gold:hover, .btn-outline-gold.active {
+            background: var(--accent-gold);
+            color: #000 !important;
+        }
+
+        /* Hero Section Styling */
+        .hero-section {
+            min-height: 90vh;
+            background: var(--hero-overlay), 
+                        url('images/plaza.jpeg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 90px;
+        }
+        .hero-badge {
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 35px;
+        }
+        .section-title h2 {
+            font-size: 2.3rem;
+            font-weight: 700;
+        }
+        .section-title span {
+            color: var(--accent-gold);
+        }
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background: var(--accent-gold);
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+        }
+        .text-center.section-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .custom-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+        .custom-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-gold);
+        }
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(212, 175, 55, 0.12);
+            color: var(--accent-gold);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        /* Project Image Wrapper & Bottom Right Overlay Badge */
+        .project-img-wrapper {
+            position: relative;
+            overflow: hidden;
+            height: 240px;
+            background-color: var(--bg-secondary);
+        }
+        .project-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .custom-card:hover .project-img-wrapper img {
+            transform: scale(1.08);
+        }
+        
+        .corner-badge-br {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(11, 16, 23, 0.88);
+            color: var(--accent-gold);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+            z-index: 2;
+            letter-spacing: 0.5px;
+        }
+
+        /* About Section Full Image Display Fix */
+        .about-image-container {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid var(--border-color);
+            box-shadow: 0 10px 30px var(--shadow-color);
+            background-color: var(--bg-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .about-image-container img {
+            width: 100%;
+            height: auto;
+            max-height: 520px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .form-control, .form-select {
+            background-color: var(--input-bg) !important;
+            color: var(--input-text) !important;
+            border: 1px solid var(--border-color) !important;
+        }
+        .form-control::placeholder {
+            color: var(--text-muted);
+        }
+        .form-control:focus, .form-select:focus {
+            box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25) !important;
+            border-color: var(--accent-gold) !important;
+        }
+
+        .social-box {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 40px 20px;
+            border: 1px solid var(--border-color);
+        }
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--accent-gold);
+            font-size: 1.3rem;
+            margin: 0 6px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: 1px solid var(--border-color);
+        }
+        .social-btn:hover {
+            background: var(--accent-gold);
+            color: #000;
+            transform: translateY(-4px);
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 22px;
+        }
+        .contact-info-item i {
+            width: 42px;
+            height: 42px;
+            background: rgba(212, 175, 55, 0.12);
+            color: var(--accent-gold);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .map-wrapper {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 6px 20px var(--shadow-color);
+            height: 320px;
+            width: 100%;
+        }
+
+        .custom-toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--bg-card);
+            border: 2px solid var(--accent-gold);
+            color: var(--text-primary);
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px var(--shadow-color);
+            z-index: 9999;
+            display: none;
+        }
+
+        footer {
+            background-color: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* ============================
+   RESPONSIVE MEDIA QUERIES
+   ============================ */
+
+/* Tablets & small laptops (max-width: 991px) */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background-color: var(--nav-bg);
+        border-radius: 10px;
+        padding: 15px;
+        margin-top: 10px;
+    }
+    .nav-link {
+        margin: 4px 0;
+        padding-bottom: 4px !important;
+    }
+    .hero-section {
+        min-height: 75vh;
+        padding-top: 100px;
+        text-align: center;
+    }
+    .section-title h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Tablets (max-width: 768px) */
+@media (max-width: 768px) {
+    .navbar-brand img {
+        height: 50px !important;
+        margin-top: 10px !important;
+    }
+    .navbar-brand span {
+        font-size: 0.9rem !important;
+    }
+    .hero-section h1 {
+        font-size: 1.8rem !important;
+    }
+    .hero-section .lead {
+        font-size: 1rem !important;
+    }
+    .section-title h2 {
+        font-size: 1.7rem;
+    }
+    .about-image-container img {
+        max-height: 320px;
+    }
+    .project-img-wrapper {
+        height: 200px;
+    }
+    .map-wrapper {
+        height: 250px;
+    }
+    .floating-whatsapp {
+        width: 46px;
+        height: 46px;
+        font-size: 1.4rem;
+        right: 14px;
+    }
+    .social-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
+        margin: 0 4px;
+    }
+    .custom-toast {
+        right: 15px;
+        left: 15px;
+        bottom: 20px;
+        padding: 14px 18px;
+    }
+}
+
+/* Small mobile phones (max-width: 480px) */
+@media (max-width: 480px) {
+    .navbar-brand img {
+        height: 42px !important;
+        margin-top: 8px !important;
+    }
+    .navbar-brand span {
+        font-size: 0.75rem !important;
+    }
+    .hero-badge {
+        font-size: 0.75rem;
+        padding: 5px 12px;
+    }
+    .hero-section h1 {
+        font-size: 1.5rem !important;
+    }
+    .btn-gold, .btn-outline-gold {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+    .section-title h2 {
+        font-size: 1.4rem;
+    }
+    .card-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    .custom-card {
+        margin-bottom: 10px;
+    }
+    .social-box {
+        padding: 25px 12px;
+    }
+    .contact-info-item i {
+        width: 36px;
+        height: 36px;
+        font-size: 0.95rem;
+        margin-right: 10px;
+    }
+}
+        
+    </style>
+</head>
+<body>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/923115102125" target="_blank" class="floating-whatsapp" title="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+<nav class="navbar navbar-expand-lg fixed-top py-1">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center py-0 m-0" href="#home" style="line-height: 1;">
+            <img src="images/logo.png" alt="AK Logo" 
+                 style="height: 75px; width: auto; object-fit: contain; margin-top: 20px; margin-right: -10px;">
+            
+            <span class="d-flex align-items-center" style="line-height: 1;">
+                <span style="color: var(--accent-gold); font-weight: 700; font-size: 1.1rem; letter-spacing: 0.5px;">AK</span>
+                <span style="color: var(--text-primary); font-weight: 600; font-size: 1rem; letter-spacing: 0.5px; margin-left: 4px;">ESTATE & BUILDERS</span>
+            </span>
+        </a>
+
+        <div class="d-flex align-items-center ms-auto me-2 me-lg-0 order-lg-last">
+            <button class="theme-toggle-btn ms-2" id="themeToggle" title="Toggle Light/Dark Theme">
+                <i class="fa-solid fa-moon" id="themeIcon"></i>
+            </button>
+        </div>
+
+        <button class="navbar-toggler navbar-dark ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                <li class="nav-item"><a class="nav-link" href="#media">Media Hub</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 text-lg-start text-center">
+                    <span class="hero-badge"><i class="fa-solid fa-location-dot me-1"></i> New City Phase II, Wah Cantt</span>
+                    <h1 class="display-4 fw-bold mb-3">Building Your Dreams, Securing Your Future</h1>
+                    <p class="lead mb-4 fs-5" style="max-width: 650px;">
+                        Premier Realtors and Developers specializing in residential & commercial properties, plot files, and modern turnkey construction in Wah Cantt and Taxila.
+                    </p>
+                    <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3">
+                        <a href="#projects" class="btn btn-gold btn-lg">Explore Projects</a>
+                        <a href="#contact" class="btn btn-outline-gold btn-lg">Contact Office</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-5" style="background-color: var(--bg-secondary);">
+        <div class="container py-4">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <div class="about-image-container position-relative">
+                        <img id="aboutImage" 
+                             src="images/about.jpeg" 
+                             alt="AK Estate & Builders Architectural Construction"
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80';">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="section-title">
+                        <h2>About <span>AK Estate & Builders</span></h2>
+                    </div>
+                    <p>
+                        Based in the prestigious <strong>New City Phase II, Wah Cantt</strong>, AK Estate & Builders stands as a benchmark of trust and excellence in real estate advisory and structural development.
+                    </p>
+                    <p>
+                        We offer end-to-end estate services—from prime plot file acquisitions to constructing luxury 5, 7, and 10 Marla residential villas and commercial hubs like <strong>AK Galleria</strong>.
+                    </p>
+                    
+                    <div class="row g-3 mt-3">
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-circle-check me-2" style="color: var(--accent-gold);"></i>
+                                <span>Prime Location Deals</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-circle-check me-2" style="color: var(--accent-gold);"></i>
+                                <span>Turnkey Construction</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-circle-check me-2" style="color: var(--accent-gold);"></i>
+                                <span>Transparent Guidance</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-circle-check me-2" style="color: var(--accent-gold);"></i>
+                                <span>Commercial Development</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-5">
+        <div class="container py-4">
+            <div class="text-center section-title mx-auto" style="max-width: 600px;">
+                <h2>Our Core <span>Services</span></h2>
+                <p>Comprehensive Real Estate & Construction Solutions tailored to your investment goals.</p>
+            </div>
+
+            <div class="row g-4 mt-2">
+                <div class="col-lg-4 col-md-6">
+                    <div class="custom-card p-4">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-handshake"></i>
+                        </div>
+                        <h4 class="brand-font mb-3">Property Buying & Selling</h4>
+                        <p>Expert assistance in buying and selling residential and commercial plots, houses, and plot files in New City Phase II and surrounding areas.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="custom-card p-4">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-helmet-safety"></i>
+                        </div>
+                        <h4 class="brand-font mb-3">House Construction</h4>
+                        <p>High-quality construction services for 5, 7, and 10 Marla luxury homes. From grey structure to turnkey finished solutions.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="custom-card p-4">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <h4 class="brand-font mb-3">Real Estate Investments</h4>
+                        <p>Strategic investment advisory tailored for high ROI in commercial plazas, shop holdings, and fast-developing housing blocks.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="custom-card p-4">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-building-user"></i>
+                        </div>
+                        <h4 class="brand-font mb-3">Commercial Development</h4>
+                        <p>Specialized commercial project development, including flagship plaza projects like AK Galleria in Commercial Avenue.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="custom-card p-4">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-compass-drafting"></i>
+                        </div>
+                        <h4 class="brand-font mb-3">Architectural Design</h4>
+                        <p>Modern floor plans, structural engineering designs, and interior architecture for stylish modern residences.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="custom-card p-4">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-file-contract"></i>
+                        </div>
+                        <h4 class="brand-font mb-3">Plot File Trading</h4>
+                        <p>Secure transaction handling for residential and commercial plot files with complete documentation verification.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-5" style="background-color: var(--bg-secondary);">
+        <div class="container py-4">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-4">
+                <div class="section-title mb-0">
+                    <h2>Featured <span>Projects</span></h2>
+                    <p class="mb-0">Explore our signature commercial and residential developments.</p>
+                </div>
+                <div class="mt-3 mt-md-0 d-flex gap-2">
+                    <button class="btn btn-outline-gold active filter-btn" data-filter="all">All</button>
+                    <button class="btn btn-outline-gold filter-btn" data-filter="commercial">Commercial</button>
+                    <button class="btn btn-outline-gold filter-btn" data-filter="residential">Residential</button>
+                </div>
+            </div>
+
+            <div class="row g-4" id="project-list">
+                <!-- Project 1: AK Galleria -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="commercial">
+                    <div class="custom-card">
+                        <div class="project-img-wrapper">
+                            <img id="projectImg1" src="images/first.jpeg">
+                            <span class="corner-badge-br">AK Galleria - M Block</span>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="brand-font mb-2">AK Galleria</h4>
+                            <p class="small mb-2"><i class="fa-solid fa-location-dot me-1" style="color: var(--accent-gold);"></i> Commercial Avenue, New City Phase II</p>
+                            <p class="small">Flagship commercial plaza offering premium corporate office spaces and commercial shops.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 project-item" data-category="residential">
+                    <div class="custom-card">
+                        <div class="project-img-wrapper">
+                            <img id="projectImg2" src="images/house2.jpeg">
+                            <span class="corner-badge-br">Luxury Villa</span>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="brand-font mb-2">5 & 7 Marla Modern Villas</h4>
+                            <p class="small mb-2"><i class="fa-solid fa-location-dot me-1" style="color: var(--accent-gold);"></i> New City Phase II, Wah Cantt</p>
+                            <p class="small">Turnkey residential construction featuring modern elevation designs, luxury interiors, and premium finishing.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 project-item" data-category="residential">
+                    <div class="custom-card">
+                        <div class="project-img-wrapper">
+                            <img id="projectImg3" src="images/house4.jpeg">
+                            <span class="corner-badge-br">Executive Home</span>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="brand-font mb-2">10 Marla Executive Homes</h4>
+                            <p class="small mb-2"><i class="fa-solid fa-location-dot me-1" style="color: var(--accent-gold);"></i> Prime Blocks, New City Phase II</p>
+                            <p class="small">Spacious architectural design with modern amenities, garage space, and elegant aesthetic layout.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="media" class="py-5">
+        <div class="container py-4">
+            <div class="social-box text-center">
+                <h3 class="brand-font mb-2">Connect With Us On <span style="color: var(--accent-gold);">Social Media</span></h3>
+                <p class="mb-4" style="max-width: 600px; margin: 0 auto;">
+                    Stay updated with daily property rates, site construction time-lapses, and project updates on our official platforms!
+                </p>
+                <div class="d-flex justify-content-center flex-wrap gap-2 mb-2">
+                    <a href="https://youtube.com/@akestatebuilders?si=tjJ5MfoglMGYDD7W" target="_blank" class="social-btn" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/akestatebuilders" target="_blank" class="social-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@akestatebuilders" target="_blank" class="social-btn" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://www.facebook.com/share/19UUhH8DBv/" target="_blank" class="social-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-5" style="background-color: var(--bg-secondary);">
+        <div class="container py-4">
+            <div class="row g-5">
+                <div class="col-lg-5">
+                    <div class="section-title">
+                        <h2>Get In <span>Touch</span></h2>
+                    </div>
+                    <p class="mb-4">Visit our main office at AK Galleria or reach out via call/WhatsApp for expert consultation.</p>
+
+                    <div class="contact-info-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            <h6 class="mb-1" style="color: var(--accent-gold);">Office Address</h6>
+                            <p class="mb-0 small">AK Galleria, Ground Floor, M Block, Main Boulevard, Commercial Avenue, New City Phase II, Wah Cantt.</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <div>
+                            <h6 class="mb-1" style="color: var(--accent-gold);">Mobile / WhatsApp</h6>
+                            <p class="mb-0 small">0311-5102125</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <i class="fa-solid fa-tty"></i>
+                        <div>
+                            <h6 class="mb-1" style="color: var(--accent-gold);">Landline</h6>
+                            <p class="mb-0 small">051-4950808</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div>
+                            <h6 class="mb-1" style="color: var(--accent-gold);">Email</h6>
+                            <p class="mb-0 small">akbuilders090@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <!-- Clean Standard Google Maps Embed with Specific Pin for AK Galleria -->
+                    <div class="map-wrapper mt-4">
+                        <iframe 
+                            src="https://maps.google.com/maps?q=AK+Galleria,+New+City+Phase+2,+Wah+Cantt&t=&z=16&ie=UTF8&iwloc=B&output=embed" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="custom-card p-4 p-md-5">
+                        <h4 class="brand-font mb-4">Send Us A Message</h4>
+                        <form id="contactForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <input type="text" id="contactName" class="form-control p-3" placeholder="Your Name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="tel" id="contactPhone" class="form-control p-3" placeholder="Phone / WhatsApp" required>
+                                </div>
+                                <div class="col-12">
+                                    <input type="email" id="contactEmail" class="form-control p-3" placeholder="Email Address" required>
+                                </div>
+                                <div class="col-12">
+                                    <select id="contactService" class="form-select p-3">
+                                        <option value="General Inquiry" selected>Interested In...</option>
+                                        <option value="Buying Property / Plot">Buying Property / Plot</option>
+                                        <option value="House Construction">House Construction</option>
+                                        <option value="AK Galleria Commercial Investment">AK Galleria Commercial Investment</option>
+                                        <option value="General Inquiry">General Inquiry</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <textarea id="contactMessage" class="form-control p-3" rows="4" placeholder="Your Message..." required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-gold w-100 py-3">Send Inquiry</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-4 text-center">
+        <div class="container">
+            <p class="mb-0 small">&copy; 2026 <strong>AK Estate & Builders</strong>. All Rights Reserved. New City Phase II, Wah Cantt.</p>
+        </div>
+    </footer>
+
+    <!-- Custom Notification Toast -->
+    <div id="customToast" class="custom-toast">
+        <div class="d-flex align-items-center">
+            <i class="fa-solid fa-circle-check fs-3 me-3" style="color: var(--accent-gold);"></i>
+            <div>
+                <strong class="d-block" style="color: var(--accent-gold);">Inquiry Sent!</strong>
+                <span id="toastMessage" class="small">Thank you! Your query has been received.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Theme Switcher Logic
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const htmlElement = document.documentElement;
+
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                htmlElement.setAttribute('data-theme', 'light');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                htmlElement.setAttribute('data-theme', 'dark');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
+
+        // Portfolio Category Filter Logic
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectItems = document.querySelectorAll('.project-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                projectItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Form Submit Handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('contactName').value;
+            const toast = document.getElementById('customToast');
+            const toastMsg = document.getElementById('toastMessage');
+
+            toastMsg.textContent = `Thank you ${name}! Your inquiry has been submitted. Our team will get back to you shortly.`;
+            toast.style.display = 'block';
+
+            this.reset();
+
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 4000);
+        });
+    </script>
+</body>
+</html>
